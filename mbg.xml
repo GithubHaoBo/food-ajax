@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<!-- 阻止生成原装注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 连接到哪个目标数据库 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/school" userId="root"
+			password="123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 指定定目标包和目标项目生成的Java模型对象pojo的位置 -->
+		<!-- targetProject=".\src\main\java"：生成的pojo对象位于哪个工程目录下 -->
+		<!-- targetPackage="com.food.bean"：生成的pojo对象位于哪个包下 -->
+		<javaModelGenerator targetPackage="com.food.bean"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 制定SQL映射文件*Mapper.xml的位置 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject=".\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- dao接口生成的地方 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.food.dao" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- table表示要逆向生成哪个数据表 -->
+		<!-- tableName="student"：数据库表名 -->
+		<!-- domainObjectName="Student"：表对应的类名 -->
+		<table tableName="student" domainObjectName="Student"></table>
+		<table tableName="grade" domainObjectName="Grade"></table>
+
+	</context>
+</generatorConfiguration>

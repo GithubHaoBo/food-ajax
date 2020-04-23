@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- setting 的 mapUnderscoreToCamelCase -->
+	<!-- 是否开启自动驼峰命名规则映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射 -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<!-- 类型别名,方便引用 -->
+	<typeAliases>
+		<package name="com.food.dao" />
+	</typeAliases>
+
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 分页合理化 -->
+			<property name="reasonable" value="true" />
+		</plugin>
+	</plugins>
+
+</configuration>
